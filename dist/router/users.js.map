@@ -1,0 +1,1 @@
+{"version":3,"file":"users.js","sourceRoot":"","sources":["../../src/router/users.ts"],"names":[],"mappings":";;AAEA,gDAAoE;AAEpE,kBAAe,CAAC,MAAsB,EAAE,EAAE;IACtC,MAAM,CAAC,GAAG,CAAC,oBAAoB,EAAE,qBAAa,CAAC,CAAC;IAChD,MAAM,CAAC,GAAG,CAAC,YAAY,EAAE,qBAAa,CAAC,CAAC;AAC5C,CAAC,CAAC"}
