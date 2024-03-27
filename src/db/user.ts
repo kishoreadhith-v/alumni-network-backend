@@ -86,10 +86,8 @@ export const getUserByEmail = (email: string) => UserModel.findOne({ email });
 export const getUserByAlumniId = (alumniId: string) =>
   UserModel.findOne({ alumniId });
 export const getUserByRollNumber = async (rollNumber: string) => {
-    console.log(`Searching for user with roll number: ${rollNumber}`);
-    const user = await UserModel.findOne({ rollNumber });
-    console.log('User found:', user);
-    return user;
+  const user = await UserModel.findOne({ rollNumber });
+  return user;
 };
 export const getUserBySessionToken = (sessionToken: string) =>
   UserModel.findOne({ "authentication.sessionToken": sessionToken });

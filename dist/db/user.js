@@ -92,9 +92,7 @@ exports.getUserByEmail = getUserByEmail;
 const getUserByAlumniId = (alumniId) => exports.UserModel.findOne({ alumniId });
 exports.getUserByAlumniId = getUserByAlumniId;
 const getUserByRollNumber = async (rollNumber) => {
-    console.log(`Searching for user with roll number: ${rollNumber}`);
     const user = await exports.UserModel.findOne({ rollNumber });
-    console.log('User found:', user);
     return user;
 };
 exports.getUserByRollNumber = getUserByRollNumber;
