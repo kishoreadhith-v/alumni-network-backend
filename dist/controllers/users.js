@@ -5,12 +5,14 @@ const user_1 = require("../db/user");
 const getUserByRoll = async (req, res) => {
     try {
         const { rollNumber } = req.params;
+        console.log(`rollNumber: ${rollNumber}`);
         const user = await (0, user_1.getUserByRollNumber)(rollNumber);
+        console.log('user:', user);
         if (!user) {
-            res.json({ message: "User not found" });
+            res.json({ success: false });
         }
         else {
-            res.json(user);
+            res.json({ success: true, user });
         }
     }
     catch (error) {
@@ -43,10 +45,8 @@ const createUserorUpdate = async (req, res) => {
             await (0, user_1.updateUser)(body.alumniId, body);
             res.json({ message: "User updated successfully" });
         }
-        ;
     }
-    catch (error) {
-    }
+    catch (error) { }
 };
 exports.createUserorUpdate = createUserorUpdate;
 //# sourceMappingURL=users.js.map
