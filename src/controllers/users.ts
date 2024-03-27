@@ -1,6 +1,6 @@
 import express from "express";
 
-import { getUserByRollNumber, getUserCount,createUser } from "../db/user";
+import { getUserByRollNumber, getUserCount,createUser,updateUser } from "../db/user";
 
 export const getUserByRoll = async (
   req: express.Request,
@@ -42,14 +42,10 @@ try {
     await createUser(body);
     res.json({ message: "User created successfully" });
   }else{
-     const user = await findOneAndUpdate({alumniId:body.alumniId},body);
+       await updateUser(body.alumniId,body);
       res.json({ message: "User updated successfully" });
   };
 } catch (error) {
   
 }
 };
-function findOneAndUpdate(arg0: { alumniId: any; }, body: any) {
-  throw new Error("Function not implemented.");
-}
-

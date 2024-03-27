@@ -102,7 +102,7 @@ const getUserBySessionToken = (sessionToken) => exports.UserModel.findOne({ "aut
 exports.getUserBySessionToken = getUserBySessionToken;
 const createUser = (values) => new exports.UserModel(values).save().then((user) => user.toObject());
 exports.createUser = createUser;
-const updateUser = (alumniId, values) => exports.UserModel.findOneAndUpdate({ alumniId }, values).then((user) => user.toObject());
+const updateUser = (alumniID, values) => exports.UserModel.findOneAndUpdate({ alumniId: alumniID }, values).then((user) => user.toObject());
 exports.updateUser = updateUser;
 const deleteUser = (alumniId) => exports.UserModel.findOneAndDelete({ alumniId });
 exports.deleteUser = deleteUser;

@@ -40,7 +40,7 @@ const createUserorUpdate = async (req, res) => {
             res.json({ message: "User created successfully" });
         }
         else {
-            const user = await findOneAndUpdate({ alumniId: body.alumniId }, body);
+            await (0, user_1.updateUser)(body.alumniId, body);
             res.json({ message: "User updated successfully" });
         }
         ;
@@ -49,7 +49,4 @@ const createUserorUpdate = async (req, res) => {
     }
 };
 exports.createUserorUpdate = createUserorUpdate;
-function findOneAndUpdate(arg0, body) {
-    throw new Error("Function not implemented.");
-}
 //# sourceMappingURL=users.js.map
