@@ -5,5 +5,5 @@ import { createUserorUpdate, getUserByRoll, getUsersCount } from "../controllers
 export default (router: express.Router) => {
     router.get("/users/:rollNumber", getUserByRoll);
     router.get("/usercount", getUsersCount);
-    router.post("/createUser",createUserorUpdate);
+    router.post("/createAndUpdateUser",createUserorUpdate);
 };

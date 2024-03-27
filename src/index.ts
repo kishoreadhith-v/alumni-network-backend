@@ -9,6 +9,7 @@ import router from "./router";
 import mongoose from "mongoose";
 
 import dotenv from 'dotenv';
+import users from "router/users";
 dotenv.config();
 
 const app = express();
