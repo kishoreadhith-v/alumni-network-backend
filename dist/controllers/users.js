@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUsersCount = exports.getUserByRoll = void 0;
+exports.createUserorUpdate = exports.getUsersCount = exports.getUserByRoll = void 0;
 const user_1 = require("../db/user");
 const getUserByRoll = async (req, res) => {
     try {
@@ -30,4 +30,26 @@ const getUsersCount = async (req, res) => {
     }
 };
 exports.getUsersCount = getUsersCount;
+const createUserorUpdate = async (req, res) => {
+    try {
+        let body = req.body;
+        body["alumniId"] = body.completionYear + "A" + body.rollNumber;
+        const user = await (0, user_1.getUserByRollNumber)(body.rollNumber);
+        if (!user) {
+            await (0, user_1.createUser)(body);
+            res.json({ message: "User created successfully" });
+        }
+        else {
+            const user = await findOneAndUpdate({ alumniId: body.alumniId }, body);
+            res.json({ message: "User updated successfully" });
+        }
+        ;
+    }
+    catch (error) {
+    }
+};
+exports.createUserorUpdate = createUserorUpdate;
+function findOneAndUpdate(arg0, body) {
+    throw new Error("Function not implemented.");
+}
 //# sourceMappingURL=users.js.map

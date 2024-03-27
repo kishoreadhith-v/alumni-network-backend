@@ -1,4 +1,4 @@
-import express from "express";
+  import express from "express";
 import http from "http";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -13,7 +13,7 @@ dotenv.config();
 
 const app = express();
 
-app.use(
+app.use(  
   cors({
     credentials: true,
   })
