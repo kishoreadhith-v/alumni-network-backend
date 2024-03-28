@@ -15,7 +15,7 @@ export const getUserByRoll = async (
     const { rollNumber } = req.params;
     console.log(`rollNumber: ${rollNumber}`);
     const user = await getUserByRollNumber(rollNumber);
-    console.log('user:', user);
+    console.log("user:", user);
     if (!user) {
       res.json({ success: false });
     } else {
@@ -49,10 +49,21 @@ export const createUserorUpdate = async (
     const user = await getUserByRollNumber(body.rollNumber);
     if (!user) {
       await createUser(body);
-      res.json({ message: "User created successfully" });
+      res
+        .status(200)
+        .json({
+          message: "User created successfully",
+          alumniId: body.alumniId,
+        });
     } else {
       await updateUser(body.alumniId, body);
-      res.json({ message: "User updated successfully" });
+      res.status(201).json({
+        message: "User updated successfully",
+        alumniId: body.alumniId,
+      });
     }
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(400);
+  }
 };
