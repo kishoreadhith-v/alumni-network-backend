@@ -35,6 +35,7 @@ exports.getUsersCount = getUsersCount;
 const createUserorUpdate = async (req, res) => {
     try {
         let body = req.body;
+        console.log("request body:", body);
         body["alumniId"] = body.completionYear + "A" + body.rollNumber;
         const user = await (0, user_1.getUserByRollNumber)(body.rollNumber);
         if (!user) {
@@ -44,6 +45,10 @@ const createUserorUpdate = async (req, res) => {
                 .json({
                 message: "User created successfully",
                 alumniId: body.alumniId,
+                name: body.name,
+                rollNumber: body.rollNumber,
+                programmeName: body.programmeName,
+                completionYear: body.completionYear,
             });
         }
         else {
@@ -51,6 +56,10 @@ const createUserorUpdate = async (req, res) => {
             res.status(201).json({
                 message: "User updated successfully",
                 alumniId: body.alumniId,
+                name: body.name,
+                rollNumber: body.rollNumber,
+                programmeName: body.programmeName,
+                completionYear: body.completionYear,
             });
         }
     }

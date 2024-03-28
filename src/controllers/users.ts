@@ -45,6 +45,7 @@ export const createUserorUpdate = async (
 ) => {
   try {
     let body = req.body;
+    console.log("request body:",body);
     body["alumniId"] = body.completionYear + "A" + body.rollNumber;
     const user = await getUserByRollNumber(body.rollNumber);
     if (!user) {
