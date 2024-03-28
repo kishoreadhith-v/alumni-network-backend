@@ -55,12 +55,20 @@ export const createUserorUpdate = async (
         .json({
           message: "User created successfully",
           alumniId: body.alumniId,
+          name: body.name,
+          rollNumber: body.rollNumber,
+          programmeName: body.programmeName,
+          completionYear: body.completionYear,
         });
     } else {
       await updateUser(body.alumniId, body);
       res.status(201).json({
         message: "User updated successfully",
         alumniId: body.alumniId,
+        name: body.name,
+        rollNumber: body.rollNumber,
+        programmeName: body.programmeName,
+        completionYear: body.completionYear,
       });
     }
   } catch (error) {
