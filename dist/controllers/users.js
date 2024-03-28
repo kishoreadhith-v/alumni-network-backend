@@ -7,7 +7,7 @@ const getUserByRoll = async (req, res) => {
         const { rollNumber } = req.params;
         console.log(`rollNumber: ${rollNumber}`);
         const user = await (0, user_1.getUserByRollNumber)(rollNumber);
-        console.log('user:', user);
+        console.log("user:", user);
         if (!user) {
             res.json({ success: false });
         }
@@ -39,14 +39,25 @@ const createUserorUpdate = async (req, res) => {
         const user = await (0, user_1.getUserByRollNumber)(body.rollNumber);
         if (!user) {
             await (0, user_1.createUser)(body);
-            res.json({ message: "User created successfully" });
+            res
+                .status(200)
+                .json({
+                message: "User created successfully",
+                alumniId: body.alumniId,
+            });
         }
         else {
             await (0, user_1.updateUser)(body.alumniId, body);
-            res.json({ message: "User updated successfully" });
+            res.status(201).json({
+                message: "User updated successfully",
+                alumniId: body.alumniId,
+            });
         }
     }
-    catch (error) { }
+    catch (error) {
+        console.error(error);
+        res.sendStatus(400);
+    }
 };
 exports.createUserorUpdate = createUserorUpdate;
 //# sourceMappingURL=users.js.map
