@@ -66,21 +66,21 @@ const UserSchema = new mongoose_1.default.Schema({
     status: {
         type: String,
     },
-    authentication: {
-        password: {
-            type: String,
-            required: true,
-            select: false,
-        },
-        salt: {
-            type: String,
-            select: false,
-        },
-        sessionToken: {
-            type: String,
-            select: false,
-        },
-    },
+    // authentication: {
+    //   password: {
+    //     type: String,
+    //     required: true,
+    //     select: false,
+    //   },
+    //   salt: {
+    //     type: String,
+    //     select: false,
+    //   },
+    //   sessionToken: {
+    //     type: String,
+    //     select: false,
+    //   },
+    // },
 });
 exports.UserModel = mongoose_1.default.model("User", UserSchema);
 const getUsers = () => exports.UserModel.find();
